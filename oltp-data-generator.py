@@ -10,6 +10,7 @@ class OLTPGenerator:
         """Инициализирует генератор."""
         self.fake = Faker("ru_RU")
         self.segments = ["Bronze", "Silver", "Gold"]
+        self.generator = rnd.default_rng(42)
 
 
     def customer_generator(self, number: int) -> list[tuple]:
@@ -25,10 +26,8 @@ class OLTPGenerator:
             phone = self.fake.phone_number()  # телефон
             city = self.fake.city()  # Город
 
-            generator = rnd.default_rng(42)
-
             # Выбираем сегмент случайно с разными весами
-            segment = generator.choice(self.segments, p=[0.7, 0.25, 0.05]).item()  # Сегмент: золото, серебро, бронза
+            segment = self.generator.choice(self.segments, p=[0.7, 0.25, 0.05]).item()  # Сегмент: золото, серебро, бронза
             loyalty_card = self.fake.bothify(text="LC-########", letters="ABCDE")  # номер карты лояльности
             birth_date = self.fake.date_of_birth(minimum_age=18, maximum_age=70)  # дата рождения
             reg_date = self.fake.date_time_between(start_date="-2y", end_date="now", tzinfo=UTC)  # дата регистрации
