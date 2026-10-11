@@ -7,7 +7,10 @@ authors = [
     { name = "oneartemisshow", email = "salemmayhem666@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "faker>=40.43.0",
+    "numpy>=2.5.4",
+]
 
 [project.scripts]
 pet-data-modeling-scd = "pet_data_modeling_scd:main"
