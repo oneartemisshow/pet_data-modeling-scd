@@ -1,0 +1,147 @@
+[project]
+name = "pet-data-modeling-scd"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "oneartemisshow", email = "salemmayhem666@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+pet-data-modeling-scd = "pet_data_modeling_scd:main"
+
+[build-system]
+requires = ["uv_build>=0.12.6,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.17.0",
+]
+
+[tool.ruff]
+# Целевая версия Python
+target-version = "py312"
+# Максимальная длина строки
+line-length = 120
+
+[tool.ruff.format]
+# Стиль кавычек: "double" (двойные)
+quote-style = "double"
+# Отступы: "tab"
+indent-style = "tab"
+
+[tool.ruff.lint]
+# Включаем правила
+select = [
+    "A",     # flake8-builtins
+    "ANN",   # flake8-annotations
+    "ARG",   # flake8-unused-arguments
+    "ASYNC", # flake8-async
+    "B",     # flake8-bugbear
+    "BLE",   # flake8-blind-except
+    "C",     # mccabe, flake8-comprehensions
+    "COM",   # flake8-commas
+    "D",     # pydocstyle
+    "DTZ",   # flake8-datetimez
+    "E",     # pycodestyle (errors)
+    "EM",    # flake8-errmsg
+    "ERA",   # flake8-eradicate
+    "EXE",   # flake8-executable
+    "F",     # pyflakes
+    "FA",    # flake8-future-annotations
+    "FBT",   # flake8-boolean-trap
+    "FIX",   # flake8-fixme
+    "FLY",   # flynt
+    "G",     # flake8-logging-format
+    "I",     # isort
+    "ICN",   # flake8-import-conventions
+    "INP",   # flake8-no-pep420
+    "INT",   # flake8-gettext
+    "ISC",   # flake8-implicit-str-concat
+    "N",     # pep8-naming
+    "NPY",   # NumPy-specific rules
+    "PD",    # pandas-vet
+    "PERF",  # perflint
+    "PGH",   # pygrep-hooks
+    "PIE",   # flake8-pie
+    "PL",    # Pylint
+    "PT",    # flake8-pytest-style
+    "PTH",   # flake8-use-pathlib
+    "PYI",   # flake8-pyi
+    "Q",     # flake8-quotes
+    "R",     # flake8-return
+    "RET",   # flake8-return
+    "RSE",   # flake8-raise
+    "RUF",   # Ruff-specific rules
+    "S",     # flake8-bandit
+    "SIM",   # flake8-simplify
+    "SLF",   # flake8-self
+    "SLOT",  # flake8-slots
+    "T",     # flake8-print
+    "TD",    # flake8-todos
+    "TID",   # flake8-tidy-imports
+    "TRY",   # tryceratops
+    "UP",    # pyupgrade
+    "W",     # pycodestyle (warnings)
+    "YTT",   # flake8-2020
+]
+
+# Часть игнорируем
+ignore = [
+    # Multi-line docstring summary should start at the first line
+    "D212",
+    # No blank lines allowed after function docstring (found {num_lines})
+    "D202",
+    # Probable insecure usage of temporary file or directory: "{}"
+    "S108",
+    # Missing docstring in public module
+    "D100",
+    # Logging statement uses f-string
+    "G004",
+    # Possible SQL injection vector through string-based query construction
+    "S608",
+    # Checks for docstrings on class definitions that are not preceded by a blank line.
+    "D203",
+    # Checks for uses of the assert keyword.
+    "S101",
+    # Checks for module names that do not follow the snake_case naming convention or are otherwise invalid.
+    "N999",
+    # Checks for print statements.
+    "T201",
+    # Although df is a common variable name for a Pandas DataFrame, it's not a great variable name for production code
+    "PD901",
+    # Checks for ambiguous Unicode characters in comments.
+    "RUF001", "RUF002", "RUF003",
+]
+
+# Включаем автофикс
+fixable = ["ALL"]
+unfixable = []
+
+# Исключаем директории, которые обычно скрывают
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
