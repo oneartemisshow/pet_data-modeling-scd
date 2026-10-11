@@ -1,0 +1,29 @@
+services:
+  oltp_pg:
+    image: postgres:18
+    environment:
+      - POSTGRES_DB=retail
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - pg_data:/var/lib/postgresql
+    ports:
+      - 5432:5432
+  
+  olap_click:
+    image: clickhouse/clickhouse-server:26.8
+    environment:
+      - CLICKHOUSE_DB=retail_analytics
+      - CLICKHOUSE_USER=analyst
+      - CLICKHOUSE_PASSWORD=analyst
+    ports:
+      - 8123:8123
+      - 9000:9000
+    volumes:
+      - click_data:/var/lib/clickhouse
+      - click_logs:/var/log/clickhouse-server
+    
+volumes:
+  pg_data:
+  click_data:
+  click_logs:
